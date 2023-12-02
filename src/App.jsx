@@ -10,7 +10,8 @@ import Spline from '@splinetool/react-spline'
 export default function App() {
   const popWindow = () => {
     const cover = document.querySelector('.cover')
-    cover.classList.toggle('opacity-0')
+    cover.classList.toggle('flex')
+    cover.classList.toggle('hidden')
   }
 
   return (
@@ -59,7 +60,7 @@ export default function App() {
         </div>
       </div>
       <div
-        className="cover absolute top-0 left-0 right-0 opacity-0 flex items-center justify-center p-10 h-[100vh] w-[100vw]"
+        className="cover absolute top-0 left-0 right-0 hidden items-center justify-center p-10 h-[100vh] w-[100vw]"
         onClick={popWindow}
       >
         <div className="rounded-lg p-4 bg-white flex flex-col">
