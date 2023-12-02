@@ -1,0 +1,16 @@
+.card {
+  background: rgba(0, 0, 0, 0.7); /* 半透明背景 */
+  backdrop-filter: blur(10px); /* 模糊效果 */
+  /* 其他样式（如边框、圆角等）*/
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cover {
+  background: rgba(0, 0, 0, 0.4); /* 半透明背景 */
+  backdrop-filter: blur(10px); /* 模糊效果 */
+  /* 其他样式（如边框、圆角等）*/
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
