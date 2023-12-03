@@ -28,7 +28,7 @@ export default function App() {
           </span>
         </div>
       </div>
-      <div className="relative mt-20 h-[90%] px-4 w-full flex flex-col items-center justify-start text-white font-bold">
+      <div className="relative mt-20 px-4 w-full flex flex-col items-center justify-start text-white font-bold">
         <p className="pb-7">
           澳大利亚知名红酒品牌奔富（Penfolds）
           <span className=" text-center">
@@ -46,17 +46,17 @@ export default function App() {
             0x0318e1eb24ae0ca0d5f230e997abd38020d9b7ac
           </strong>
         </div>
-        <div className="mt-auto mb-16 flex flex-col w-full justify-center items-center ">
-          <div
-            className="flex justify-center items-center mb-2 cursor-pointer"
-            onClick={popWindow}
-          >
-            <GiEarthAsiaOceania></GiEarthAsiaOceania>
-            <span className="mx-2 text-lg">项目介绍</span>
-            <FaArrowRightLong />
-          </div>
-          <div className="text-sm font-thin">现已上线BSC链</div>
+      </div>
+      <div className="absolute bottom-14 text-white mb-16 flex flex-col w-full justify-center items-center ">
+        <div
+          className="flex justify-center items-center mb-2 cursor-pointer"
+          onClick={popWindow}
+        >
+          <GiEarthAsiaOceania></GiEarthAsiaOceania>
+          <span className="mx-2 text-lg">项目介绍</span>
+          <FaArrowRightLong />
         </div>
+        <div className="text-sm font-thin">现已上线BSC链</div>
       </div>
       <div className="cover absolute top-0 left-0 right-0 hidden items-center justify-center p-10 h-[100vh] w-[100vw]">
         <div className="rounded-lg p-4 bg-white flex flex-col">

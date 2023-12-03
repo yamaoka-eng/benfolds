@@ -21,7 +21,7 @@ strong {
   color: transparent !important;
   background: linear-gradient(62deg, #87c2fd, #dcb9fc);
   &:hover {
-    @apply shadow-lg shadow-black scale-125;
+    @apply scale-105;
     filter: hue-rotate(540deg);
   }
 }
