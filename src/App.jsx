@@ -29,6 +29,7 @@ export default function App() {
             mutation.target.style.width === '100%' &&
             mutation.target.style.height === '100%'
           ) {
+            console.log('模型加载完成')
             const loading = document.querySelector('.loading')
             loading.classList.toggle('hidden')
             observer.disconnect() // 停止监听
