@@ -14,3 +14,14 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+strong {
+  @apply bg-clip-text text-transparent text-[#7aa2f7] px-[0.1rem] font-semibold transition-all duration-700 text-base;
+  background-clip: text !important;
+  color: transparent !important;
+  background: linear-gradient(62deg, #87c2fd, #dcb9fc);
+  &:hover {
+    @apply shadow-lg shadow-black scale-125;
+    filter: hue-rotate(540deg);
+  }
+}
