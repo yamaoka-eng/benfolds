@@ -85,7 +85,7 @@ export default function App() {
             联合音浪公会致力打造“奔富”神话
           </span>
         </p>
-        <div className="w-full max-w-[1000px] rounded-lg p-3 shadow-xl flex flex-col justify-center items-center card break-words text-center">
+        <div className="w-full max-w-[700px] rounded-lg p-3 shadow-xl flex flex-col justify-center items-center card break-words text-center">
           <p>合约地址:</p>
           <strong className="text-sm w-full font-sans">
             0x0318e1eb24ae0ca0d5f230e997abd38020d9b7ac
