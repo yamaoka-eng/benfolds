@@ -14,6 +14,10 @@ import Spline from '@splinetool/react-spline'
 export default function App() {
   const splineRef = useRef(null)
 
+  useEffect(() => {
+    onLoad()
+  }, [])
+
   const popWindow = () => {
     const cover = document.querySelector('.cover')
     cover.classList.toggle('flex')
@@ -59,10 +63,7 @@ export default function App() {
         <div className="loading text-white absolute top-[50%] left-[50%] animate-pulse translate-x-[-50%] translate-y-[-50%] text-2xl font-bold tracking-widest ">
           加载中...
         </div>
-        <Spline
-          scene="https://prod.spline.design/QIKrJsLwCazcXXLB/scene.splinecode"
-          onLoad={onLoad}
-        />
+        <Spline scene="https://prod.spline.design/QIKrJsLwCazcXXLB/scene.splinecode" />
       </div>
       {/* 内容 */}
       <header className="w-full fixed top-0 left-0 flex justify-between items-center p-3">
