@@ -3,6 +3,8 @@ import { FaArrowRightLong } from 'react-icons/fa6'
 import { IoMdClose } from 'react-icons/io'
 
 import benfoldsImg from '../public/bf.png'
+import gateio from '../public/gate.io.png'
+import okx from '../public/okx.png'
 
 import './App.scss'
 
@@ -40,7 +42,7 @@ export default function App() {
             联合音浪公会致力打造“奔富”神话
           </span>
         </p>
-        <div className="w-full rounded-lg p-3 shadow-xl flex flex-col justify-center items-center card break-words text-center">
+        <div className="w-full max-w-[1000px] rounded-lg p-3 shadow-xl flex flex-col justify-center items-center card break-words text-center">
           <p>合约地址:</p>
           <strong className="text-sm w-full font-sans">
             0x0318e1eb24ae0ca0d5f230e997abd38020d9b7ac
@@ -56,8 +58,16 @@ export default function App() {
           <span className="mx-2 text-lg">项目介绍</span>
           <FaArrowRightLong />
         </div>
-        <div className="text-sm font-thin">现已上线BSC链</div>
+        <div className="text-sm font-thin mb-8">现已上线BSC链</div>
+        <div className="flex w-full justify-center items-center">
+          <img className="w-8 h-8" src={benfoldsImg} alt="" />
+          <IoMdClose className="mx-2"></IoMdClose>
+          <img className="w-16 h-8" src={gateio} alt="" />
+          <IoMdClose className="mx-2"></IoMdClose>
+          <img className="w-16 h-16" src={okx} alt="" />
+        </div>
       </div>
+      {/* 弹窗 */}
       <div className="cover absolute top-0 left-0 right-0 hidden items-center justify-center p-10 h-[100vh] w-[100vw]">
         <div className="rounded-lg p-4 bg-white flex flex-col">
           <div className="ml-auto mb-2 w-5 h-5 font-black" onClick={popWindow}>
