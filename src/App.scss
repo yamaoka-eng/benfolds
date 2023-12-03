@@ -16,12 +16,8 @@
 }
 
 strong {
-  @apply bg-clip-text text-transparent text-[#7aa2f7] px-[0.1rem] font-semibold transition-all duration-700 text-base;
-  background-clip: text !important;
-  color: transparent !important;
+  @apply hover:scale-105 hover:hue-rotate-[540deg] bg-clip-text text-transparent bg-transparent px-[0.1rem] font-semibold transition-all duration-700;
   background: linear-gradient(62deg, #87c2fd, #dcb9fc);
-  &:hover {
-    @apply scale-105;
-    filter: hue-rotate(540deg);
-  }
+  background-clip: text;
+  color: transparent;
 }

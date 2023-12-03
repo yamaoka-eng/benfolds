@@ -1,6 +1,7 @@
 import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { IoMdClose } from 'react-icons/io'
+import { useState, useEffect, useRef } from 'react'
 
 import benfoldsImg from '../public/bf.png'
 import gateio from '../public/gate.io.png'
@@ -11,26 +12,67 @@ import './App.scss'
 import Spline from '@splinetool/react-spline'
 
 export default function App() {
+  const splineRef = useRef(null)
+
   const popWindow = () => {
     const cover = document.querySelector('.cover')
     cover.classList.toggle('flex')
     cover.classList.toggle('hidden')
   }
 
+  const onLoad = () => {
+    const observer = new MutationObserver(mutations => {
+      try {
+        mutations.forEach(mutation => {
+          if (
+            mutation.target.tagName === 'CANVAS' &&
+            mutation.target.style.width === '100%' &&
+            mutation.target.style.height === '100%'
+          ) {
+            const loading = document.querySelector('.loading')
+            loading.classList.toggle('hidden')
+            observer.disconnect() // 停止监听
+            throw new Error() //结束循环
+          }
+        })
+      } catch (error) {}
+    })
+
+    const config = {
+      attributes: true, // 监听属性的变化，因为我们关注的是style的变化
+      attributeFilter: ['style'], // 仅监听style属性的变化
+      subtree: true // 监听后代节点，以防canvas不是直接子元素
+    }
+
+    // 开始观察
+    observer.observe(splineRef.current, config)
+  }
+
   return (
     <div className="App w-full h-full overflow-hidden relative">
-      <div className="w-full h-full fixed top-0 left-0">
-        <Spline scene="https://prod.spline.design/QIKrJsLwCazcXXLB/scene.splinecode" />
+      {/* 背景3D模型 */}
+      <div
+        className="w-full h-full fixed top-0 left-0 flex items-center justify-center"
+        ref={splineRef}
+      >
+        <div className="loading text-white absolute top-[50%] left-[50%] animate-pulse translate-x-[-50%] translate-y-[-50%] text-2xl font-bold tracking-widest ">
+          加载中...
+        </div>
+        <Spline
+          scene="https://prod.spline.design/QIKrJsLwCazcXXLB/scene.splinecode"
+          onLoad={onLoad}
+        />
       </div>
-      <div className="w-full fixed top-0 left-0 flex justify-between items-center p-3">
+      {/* 内容 */}
+      <header className="w-full fixed top-0 left-0 flex justify-between items-center p-3">
         <div className="flex items-center text-rose-600">
           <img className="w-10 h-10" src={benfoldsImg} alt="" />
           <span className="ml-2 italic font-bold font-serif text-xl">
             Benfolds
           </span>
         </div>
-      </div>
-      <div className="relative mt-20 px-4 w-full flex flex-col items-center justify-start text-white font-bold">
+      </header>
+      <main className="relative mt-20 px-4 w-full flex flex-col items-center justify-start text-white font-bold">
         <p className="pb-7">
           澳大利亚知名红酒品牌奔富（Penfolds）
           <span className=" text-center">
@@ -48,8 +90,8 @@ export default function App() {
             0x0318e1eb24ae0ca0d5f230e997abd38020d9b7ac
           </strong>
         </div>
-      </div>
-      <div className="absolute bottom-14 text-white mb-16 flex flex-col w-full justify-center items-center ">
+      </main>
+      <footer className="absolute bottom-14 text-white mb-16 flex flex-col w-full justify-center items-center ">
         <div
           className="flex justify-center items-center mb-2 cursor-pointer"
           onClick={popWindow}
@@ -66,10 +108,10 @@ export default function App() {
           <IoMdClose className="mx-2"></IoMdClose>
           <img className="w-16 h-16" src={okx} alt="" />
         </div>
-      </div>
+      </footer>
       {/* 弹窗 */}
       <div className="cover absolute top-0 left-0 right-0 hidden items-center justify-center p-10 h-[100vh] w-[100vw]">
-        <div className="rounded-lg p-4 bg-white flex flex-col">
+        <div className="rounded-lg p-4 bg-white flex flex-col drop-shadow-lg">
           <div className="ml-auto mb-2 w-5 h-5 font-black" onClick={popWindow}>
             <IoMdClose className="w-full h-full" />
           </div>
