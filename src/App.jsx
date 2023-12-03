@@ -82,7 +82,10 @@ export default function App() {
           <p className="mt-1">
             ✅BF 官方QQ群:
             <br />
-            <a className="italic underline  decoration-sky-500" href="">
+            <a
+              className="italic underline  decoration-sky-500"
+              href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=Ck8be1fFfr4zBbmxUtnfwSO7NGWFFZJa&authKey=oQa0ZS228tLwZZm0H3cjkVJkM0XTP7vS%2F1TkDvTKxcCFApUcS4UwN9DEzCa5iDe4&noverify=0&group_code=901308219"
+            >
               901308219
             </a>
           </p>
