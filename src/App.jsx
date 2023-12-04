@@ -1,29 +1,53 @@
 import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { IoMdClose } from 'react-icons/io'
-import { useState, useEffect, useRef } from 'react'
+import { FcMindMap, FcMoneyTransfer, FcStatistics } from 'react-icons/fc'
+
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import benfoldsImg from '../public/bf.png'
 import gateio from '../public/gate.io.png'
 import okx from '../public/okx.png'
+import phone from '../public/phone.png'
+import coin from '../public/coin.png'
+import wineManor from '../public/wineManor.png'
 
 import './App.scss'
 
 import Spline from '@splinetool/react-spline'
 
 export default function App() {
+  gsap.registerPlugin(ScrollTrigger)
+
   const splineRef = useRef(null)
 
+  useEffect(() => onLoad(), [])
+
   useEffect(() => {
-    onLoad()
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: '.coin',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1
+        }
+      })
+      .to('.coin', {
+        y: -1
+      })
   }, [])
 
+  // 弹窗
   const popWindow = () => {
     const cover = document.querySelector('.cover')
     cover.classList.toggle('flex')
     cover.classList.toggle('hidden')
   }
 
+  // 模型加载
   const onLoad = () => {
     const observer = new MutationObserver(mutations => {
       try {
@@ -35,7 +59,8 @@ export default function App() {
           ) {
             console.log('模型加载完成')
             const loading = document.querySelector('.loading')
-            loading.classList.toggle('hidden')
+            if (!loading.classList.contains('.loading'))
+              loading.classList.add('hidden')
             observer.disconnect() // 停止监听
             throw new Error() //结束循环
           }
@@ -54,67 +79,166 @@ export default function App() {
   }
 
   return (
-    <div className="App w-full h-full overflow-hidden relative">
-      {/* 背景3D模型 */}
-      <div
-        className="w-full h-full fixed top-0 left-0 flex items-center justify-center"
-        ref={splineRef}
-      >
-        <div className="loading text-white absolute top-[50%] left-[50%] animate-pulse translate-x-[-50%] translate-y-[-50%] text-2xl font-bold tracking-widest ">
-          加载中...
-        </div>
-        <Spline scene="https://prod.spline.design/QIKrJsLwCazcXXLB/scene.splinecode" />
-      </div>
-      {/* 内容 */}
-      <header className="w-full fixed top-0 left-0 flex justify-between items-center p-3">
-        <div className="flex items-center text-rose-600">
-          <img className="w-10 h-10" src={benfoldsImg} alt="" />
-          <span className="ml-2 italic font-bold font-serif text-xl">
-            Benfolds
-          </span>
-        </div>
-      </header>
-      <main className="relative mt-20 px-4 w-full flex flex-col items-center justify-start text-white font-bold">
-        <p className="pb-7">
-          澳大利亚知名红酒品牌奔富（Penfolds）
-          <span className=" text-center">
-            中国代理商
-            <span className="text-rose-800 font-extrabold font-serif italic">
-              {' '}
-              Benfolds{' '}
-            </span>
-            联合音浪公会致力打造“奔富”神话
-          </span>
-        </p>
-        <div className="w-full max-w-[700px] rounded-lg p-3 shadow-xl flex flex-col justify-center items-center card break-words text-center">
-          <p>合约地址:</p>
-          <strong className="text-sm w-full font-sans">
-            0x0318e1eb24ae0ca0d5f230e997abd38020d9b7ac
-          </strong>
-        </div>
-      </main>
-      <footer className="absolute bottom-14 text-white mb-16 flex flex-col w-full justify-center items-center ">
+    <div className="App w-full h-full flex flex-col">
+      {/* 第一层内容 */}
+      <div className="showStand fixed w-[100vw] h-[100vh] flex flex-col items-center">
+        {/* 背景3D模型 */}
         <div
-          className="flex justify-center items-center mb-2 cursor-pointer"
-          onClick={popWindow}
+          className="absolute w-[100%] h-[100%] flex items-center justify-center"
+          ref={splineRef}
         >
-          <GiEarthAsiaOceania></GiEarthAsiaOceania>
-          <span className="mx-2 text-lg">项目介绍</span>
-          <FaArrowRightLong />
+          <div className="loading text-white absolute text-2xl font-bold tracking-widest ">
+            加载中...
+          </div>
+          <Spline scene="https://prod.spline.design/QIKrJsLwCazcXXLB/scene.splinecode" />
         </div>
-        <div className="text-sm font-thin mb-8">现已上线BSC链</div>
-        <div className="flex w-full justify-center items-center">
-          <img className="w-8 h-8" src={benfoldsImg} alt="" />
-          <IoMdClose className="mx-2"></IoMdClose>
-          <img className="w-16 h-8" src={gateio} alt="" />
-          <IoMdClose className="mx-2"></IoMdClose>
-          <img className="w-16 h-16" src={okx} alt="" />
+        {/* 内容 */}
+        <div className="relative w-full h-full flex flex-col items-center">
+          <header className="w-full flex justify-between items-center p-3">
+            <div className="flex items-center text-rose-600">
+              <img className="w-10 h-10" src={benfoldsImg} alt="" />
+              <span className="ml-2 italic font-bold font-serif text-xl">
+                Benfolds
+              </span>
+            </div>
+          </header>
+          <main className="mt-5 px-4 w-full flex flex-col items-center justify-start text-white font-bold">
+            <p className="pb-7">
+              <span className="text-lg">
+                澳大利亚知名红酒品牌奔富（Penfolds）
+              </span>
+              <br />
+              <span className=" text-center">
+                中国代理商
+                <span className="text-rose-800 font-extrabold font-serif italic">
+                  {' '}
+                  Benfolds{' '}
+                </span>
+                联合音浪公会致力打造“奔富”神话
+              </span>
+            </p>
+            <div className="w-full z-10 max-w-[700px] rounded-lg p-3 shadow-xl flex flex-col justify-center items-center card break-words text-center">
+              <p>合约地址:</p>
+              <strong className="text-sm w-full font-sans">
+                0x0318e1eb24ae0ca0d5f230e997abd38020d9b7ac
+              </strong>
+            </div>
+          </main>
+          <footer className="mt-auto text-white mb-[10vh] flex flex-col w-full justify-center items-center ">
+            <div
+              className="flex justify-center items-center mb-2 cursor-pointer"
+              onClick={popWindow}
+            >
+              <GiEarthAsiaOceania></GiEarthAsiaOceania>
+              <span className="mx-2 text-lg">项目介绍</span>
+              <FaArrowRightLong />
+            </div>
+            <div className="text-sm font-thin mb-8">现已上线BSC链</div>
+          </footer>
         </div>
-      </footer>
+      </div>
+      {/* 第二层内容 */}
+      <div className="relative w-full mt-[100vh] bg-white flex flex-col text-center">
+        <div className="relative">
+          <div className="w-full pt-6 pb-16 md:pt-12 md:pb-28 text-white bg-gradient-to-b from-rose-900 to-black md:font-extrabold md:text-xl md:leading-loose">
+            挖掘加密货币很困难。
+            <br />
+            投资加密货币存在风险。
+            <br />
+            我们中的许多人被排除在加密货币革命之外...
+          </div>
+          {/* 波浪 */}
+          <svg
+            className="md:h-12 h-8 w-full absolute bottom-0 fill-white"
+            aria-hidden="true"
+            fill=""
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1000 300"
+            preserveAspectRatio="none"
+          >
+            <path
+              className="opacity-10"
+              d="M 1000 299 l 2 -279 c -155 -36 -310 135 -415 164 c -102.64 28.35 -149 -32 -232 -31 c -80 1 -142 53 -229 80 c -65.54 20.34 -101 15 -126 11.61 v 54.39 z"
+            ></path>{' '}
+            <path
+              className="opacity-20"
+              d="M 1000 286 l 2 -252 c -157 -43 -302 144 -405 178 c -101.11 33.38 -159 -47 -242 -46 c -80 1 -145.09 54.07 -229 87 c -65.21 25.59 -104.07 16.72 -126 10.61 v 22.39 z"
+            ></path>{' '}
+            <path
+              className=""
+              d="M 1000 300 l 1 -230.29 c -217 -12.71 -300.47 129.15 -404 156.29 c -103 27 -174 -30 -257 -29 c -80 1 -130.09 37.07 -214 70 c -61.23 24 -108 15.61 -126 10.61 v 22.39 z"
+            ></path>
+          </svg>
+        </div>
+        {/* 生态展示 */}
+        <div className=" w-full flex flex-col justify-center items-center">
+          <div className="flex flex-col md:flex-row justify-center items-center md:items-start">
+            {/* 手机币展示 */}
+            <div className="aspect-w-1 aspect-h-1 relative flex px-6 items-center justify-center overflow-y-hidden md:ml-20 md:order-2">
+              <div className="w-full h-full md:w-80 md:h-80 translate-y-16">
+                <img className="w-full h-full" src={phone} />
+              </div>
+              <div className="coin absolute w-[82%] h-[105%] translate-y-14">
+                <img className="w-full h-full" src={coin} />
+              </div>
+            </div>
+            {/* 联名展示 */}
+            <div className="flex flex-col mt-20 justify-between items-center md:order-1 md:mt-14">
+              <p className="text-rose-800 font-bold text-4xl mb-6">
+                Penfolds酒庄联名
+              </p>
+              <p className="font-bold">持有NFT享联名红酒分红</p>
+              <div className="w-80 h-80 -translate-y-2">
+                <img src={wineManor} />
+              </div>
+            </div>
+          </div>
+          {/* 卡片 */}
+          <div className="flex flex-col md:flex-row items-center justify-center leading-relaxed md:mt-10">
+            <div className="w-60 flex flex-col justify-center items-center rounded-md p-10 m-4">
+              <div className="w-16 h-16 mb-3">
+                <FcMindMap className="w-full h-full" />
+              </div>
+              <p className="text-rose-900 font-extrabold text-2xl mb-2">生态</p>
+              <p className="text-lg">拥有红酒的庞大市场，生态完整可靠。</p>
+            </div>
+            <div className="w-60 flex flex-col justify-center items-center rounded-md p-10 m-4">
+              <div className="w-16 h-16 mb-3">
+                <FcMoneyTransfer className="w-full h-full" />
+              </div>
+              <p className="text-rose-900 font-extrabold text-2xl mb-2">分红</p>
+              <p className="text-lg">
+                持有Penfolds & Benfolds 联名NFT享联名产品以及周边利润分红。
+              </p>
+            </div>
+            <div className="w-60 flex flex-col justify-center items-center rounded-md p-10 m-4">
+              <div className="w-16 h-16 mb-3">
+                <FcStatistics className="w-full h-full" />
+              </div>
+              <p className="text-rose-900 font-extrabold text-2xl mb-2">回购</p>
+              <p className="text-lg">
+                预计将总利润20%进行回购拉升市值回报市场。
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* 合作伙伴 */}
+        <div className=" w-full flex-col md:flex-row justify-center items-center">
+          <div className="text-3xl font-black translate-y-10">合 作</div>
+          <div className="flex w-full justify-center items-center">
+            <img className="w-32 h-16" src={gateio} />
+            <img className="w-52 h-52" src={okx} />
+          </div>
+        </div>
+      </div>
+
       {/* 弹窗 */}
-      <div className="cover absolute top-0 left-0 right-0 hidden items-center justify-center p-10 h-[100vh] w-[100vw]">
-        <div className="rounded-lg p-4 bg-white flex flex-col drop-shadow-lg">
-          <div className="ml-auto mb-2 w-5 h-5 font-black" onClick={popWindow}>
+      <div className="cover fixed top-0 left-0 right-0 hidden items-center justify-center p-10 h-[100vh] w-[100vw]">
+        <div className="rounded-lg p-4 bg-white flex flex-col drop-shadow-lg md:w-96">
+          <div
+            className="ml-auto mb-2 w-5 h-5 font-black cursor-pointer"
+            onClick={popWindow}
+          >
             <IoMdClose className="w-full h-full" />
           </div>
           <p>奔富BF 简介：</p>
