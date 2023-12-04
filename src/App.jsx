@@ -96,13 +96,13 @@ export default function App() {
         <div className="relative w-full h-full flex flex-col items-center">
           <header className="w-full flex justify-between items-center p-3">
             <div className="flex items-center text-rose-600">
-              <img className="w-10 h-10" src={benfoldsImg} alt="" />
+              <img className="w-7 h-7 md:w-10 md:h-10" src={benfoldsImg} />
               <span className="ml-2 italic font-bold font-serif text-xl">
                 Benfolds
               </span>
             </div>
           </header>
-          <main className="mt-5 px-4 w-full flex flex-col items-center justify-start text-white font-bold">
+          <main className="mt-2 md:mt-8 px-4 w-full flex flex-col items-center justify-start text-white font-bold">
             <p className="pb-7">
               <span className="text-lg">
                 澳大利亚知名红酒品牌奔富（Penfolds）
@@ -178,7 +178,7 @@ export default function App() {
               <div className="w-full h-full md:w-80 md:h-80 translate-y-16">
                 <img className="w-full h-full" src={phone} />
               </div>
-              <div className="coin absolute w-[82%] h-[105%] translate-y-14">
+              <div className="coin absolute w-[78%] h-[100%] translate-y-14">
                 <img className="w-full h-full" src={coin} />
               </div>
             </div>
@@ -187,14 +187,16 @@ export default function App() {
               <p className="text-rose-800 font-bold text-4xl mb-6">
                 Penfolds酒庄联名
               </p>
-              <p className="font-bold">持有NFT享联名红酒分红</p>
+              <p className="font-bold">
+                持有NFT享联名红酒分红（即将推出.....）
+              </p>
               <div className="w-80 h-80 -translate-y-2">
                 <img src={wineManor} />
               </div>
             </div>
           </div>
           {/* 卡片 */}
-          <div className="flex flex-col md:flex-row items-center justify-center leading-relaxed md:mt-10">
+          <div className="flex flex-col md:flex-row items-center justify-center leading-relaxed">
             <div className="w-60 flex flex-col justify-center items-center rounded-md p-10 m-4">
               <div className="w-16 h-16 mb-3">
                 <FcMindMap className="w-full h-full" />

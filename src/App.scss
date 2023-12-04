@@ -1,5 +1,5 @@
 .card {
-  background: rgba(0, 0, 0, 0.7); /* 半透明背景 */
+  background: rgba(0, 0, 0, 0.8); /* 半透明背景 */
   backdrop-filter: blur(10px); /* 模糊效果 */
   /* 其他样式（如边框、圆角等）*/
   border-radius: 10px;
@@ -16,7 +16,7 @@
 }
 
 strong {
-  @apply hover:scale-105 hover:hue-rotate-[60deg] bg-clip-text text-transparent bg-transparent px-[0.1rem] font-semibold transition-all duration-700;
+  @apply hover:scale-105 hover:hue-rotate-[540deg] bg-clip-text text-transparent bg-transparent px-[0.1rem] font-semibold transition-all duration-700;
   background: linear-gradient(62deg, #ec4899, #4c0519);
   background-clip: text;
   color: transparent;
