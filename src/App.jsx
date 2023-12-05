@@ -117,23 +117,22 @@ export default function App() {
                 联合音浪公会致力打造“奔富”神话
               </span>
             </p>
-            <div className="card w-full z-10 max-w-[700px] rounded-lg p-3 shadow-xl flex flex-col justify-center items-center break-words text-center">
-              <p>合约地址:</p>
+            <div className="bg-white w-full z-10 max-w-[700px] rounded-lg p-3 shadow-xl flex flex-col justify-center items-center break-words text-center">
+              <p className="text-black">合约地址:</p>
               <strong className="text-sm w-full font-sans">
                 0x0318e1eb24ae0ca0d5f230e997abd38020d9b7ac
               </strong>
             </div>
           </main>
-          <footer className="mt-auto text-white mb-[15vh] md:mb-[30px] flex flex-col w-full justify-center items-center ">
+          <footer className="mt-auto text-white mb-[10vh] md:mb-[30px] flex flex-col w-full justify-center items-center ">
             <div
-              className="flex justify-center items-center mb-2 cursor-pointer"
+              className="flex transition-all hover:scale-105 justify-center items-center mb-2 cursor-pointer p-5 bg-rose-800 rounded-lg"
               onClick={popWindow}
             >
               <GiEarthAsiaOceania></GiEarthAsiaOceania>
               <span className="mx-2 text-lg">项目介绍</span>
               <FaArrowRightLong />
             </div>
-            <div className="text-sm font-thin mb-8">现已上线BSC链</div>
           </footer>
         </div>
       </div>
