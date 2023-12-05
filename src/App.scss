@@ -1,9 +1,6 @@
 .card {
-  background: rgba(0, 0, 0, 0.8); /* 半透明背景 */
+  background: rgba(0, 0, 0, 0.85); /* 半透明背景 */
   backdrop-filter: blur(10px); /* 模糊效果 */
-  /* 其他样式（如边框、圆角等）*/
-  border-radius: 10px;
-  padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,7 +20,7 @@ strong {
 }
 
 .showStand {
-  background-image: url('/public/展示.jpg'); /* 替换为你的图片路径 */
+  background-image: url('/public/展示.png'); /* 替换为你的图片路径 */
   background-size: cover; /* 确保图片覆盖整个元素 */
   background-position: center; /* 图片居中显示 */
   background-repeat: no-repeat; /* 图片不重复 */

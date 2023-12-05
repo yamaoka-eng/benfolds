@@ -84,7 +84,7 @@ export default function App() {
       <div className="showStand fixed w-[100vw] h-[100vh] flex flex-col items-center">
         {/* 背景3D模型 */}
         <div
-          className="absolute w-[100%] h-[100%] flex items-center justify-center"
+          className="absolute w-[100%] h-[100%] flex items-center justify-center translate-y-10 md:translate-y-16"
           ref={splineRef}
         >
           <div className="loading text-white absolute text-2xl font-bold tracking-widest ">
@@ -102,7 +102,7 @@ export default function App() {
               </span>
             </div>
           </header>
-          <main className="mt-2 md:mt-8 px-4 w-full flex flex-col items-center justify-start text-white font-bold">
+          <main className="mt-0 md:mt-8 px-4 w-full flex flex-col items-center justify-start text-white font-bold">
             <p className="pb-7">
               <span className="text-lg">
                 澳大利亚知名红酒品牌奔富（Penfolds）
@@ -117,14 +117,14 @@ export default function App() {
                 联合音浪公会致力打造“奔富”神话
               </span>
             </p>
-            <div className="w-full z-10 max-w-[700px] rounded-lg p-3 shadow-xl flex flex-col justify-center items-center card break-words text-center">
+            <div className="card w-full z-10 max-w-[700px] rounded-lg p-3 shadow-xl flex flex-col justify-center items-center break-words text-center">
               <p>合约地址:</p>
               <strong className="text-sm w-full font-sans">
                 0x0318e1eb24ae0ca0d5f230e997abd38020d9b7ac
               </strong>
             </div>
           </main>
-          <footer className="mt-auto text-white mb-[10vh] flex flex-col w-full justify-center items-center ">
+          <footer className="mt-auto text-white mb-[15vh] md:mb-[30px] flex flex-col w-full justify-center items-center ">
             <div
               className="flex justify-center items-center mb-2 cursor-pointer"
               onClick={popWindow}
@@ -171,7 +171,7 @@ export default function App() {
           </svg>
         </div>
         {/* 生态展示 */}
-        <div className=" w-full flex flex-col justify-center items-center">
+        <div className=" w-full flex flex-col justify-center items-center overflow-x-hidden">
           <div className="flex flex-col md:flex-row justify-center items-center md:items-start">
             {/* 手机币展示 */}
             <div className="aspect-w-1 aspect-h-1 relative flex px-6 items-center justify-center overflow-y-hidden md:ml-20 md:order-2">
@@ -187,9 +187,7 @@ export default function App() {
               <p className="text-rose-800 font-bold text-4xl mb-6">
                 Penfolds酒庄联名
               </p>
-              <p className="font-bold">
-                持有NFT享联名红酒分红（即将推出.....）
-              </p>
+              <p className="font-bold">更多生态即将推出</p>
               <div className="w-80 h-80 -translate-y-2">
                 <img src={wineManor} />
               </div>
@@ -209,18 +207,14 @@ export default function App() {
                 <FcMoneyTransfer className="w-full h-full" />
               </div>
               <p className="text-rose-900 font-extrabold text-2xl mb-2">分红</p>
-              <p className="text-lg">
-                持有Penfolds & Benfolds 联名NFT享联名产品以及周边利润分红。
-              </p>
+              <p className="text-lg">持有奔富治理代币则享受WBNB分红。</p>
             </div>
             <div className="w-60 flex flex-col justify-center items-center rounded-md p-10 m-4">
               <div className="w-16 h-16 mb-3">
                 <FcStatistics className="w-full h-full" />
               </div>
               <p className="text-rose-900 font-extrabold text-2xl mb-2">回购</p>
-              <p className="text-lg">
-                预计将总利润20%进行回购拉升市值回报市场。
-              </p>
+              <p className="text-lg">项目方将不定期进行回购，拉升市值。</p>
             </div>
           </div>
         </div>
