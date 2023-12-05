@@ -1,6 +1,7 @@
 import { GiEarthAsiaOceania } from 'react-icons/gi'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { IoMdClose } from 'react-icons/io'
+import { FaAngleDown } from 'react-icons/fa6'
 import { FcMindMap, FcMoneyTransfer, FcStatistics } from 'react-icons/fc'
 
 import { useEffect, useRef } from 'react'
@@ -124,7 +125,7 @@ export default function App() {
               </strong>
             </div>
           </main>
-          <footer className="mt-auto text-white mb-[10vh] md:mb-[30px] flex flex-col w-full justify-center items-center ">
+          <footer className="mt-auto text-white flex flex-col w-full justify-center items-center ">
             <div
               className="flex transition-all hover:scale-105 justify-center items-center mb-2 cursor-pointer p-5 bg-rose-800 rounded-lg"
               onClick={popWindow}
@@ -132,6 +133,9 @@ export default function App() {
               <GiEarthAsiaOceania></GiEarthAsiaOceania>
               <span className="mx-2 text-lg">项目介绍</span>
               <FaArrowRightLong />
+            </div>
+            <div className="w-10 h-10 mt-8 mb-5 font-extrabold animate-bounce">
+              <FaAngleDown className="w-full h-full" />
             </div>
           </footer>
         </div>

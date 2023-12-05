@@ -13,7 +13,7 @@
 }
 
 strong {
-  @apply hover:scale-105 hover:hue-rotate-[540deg] bg-clip-text text-transparent bg-transparent px-[0.1rem] font-semibold transition-all duration-700;
+  @apply hover:scale-105 hover:hue-rotate-[60deg] bg-clip-text text-transparent bg-transparent px-[0.1rem] font-semibold transition-all duration-700;
   background: linear-gradient(62deg, #ec4899, #4c0519);
   background-clip: text;
   color: transparent;
