@@ -88,7 +88,7 @@ export default function App() {
           className="absolute w-[100%] h-[100%] flex items-center justify-center translate-y-10 md:translate-y-16"
           ref={splineRef}
         >
-          <div className="loading text-white absolute text-2xl font-bold tracking-widest ">
+          <div className="loading text-white absolute text-2xl font-bold tracking-widest animate-pulse">
             加载中...
           </div>
           <Spline scene="https://prod.spline.design/QIKrJsLwCazcXXLB/scene.splinecode" />
