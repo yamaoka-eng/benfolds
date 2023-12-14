@@ -7,6 +7,7 @@ import { FcMindMap, FcMoneyTransfer, FcStatistics } from 'react-icons/fc'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ASScroll from '@ashthornton/asscroll'
 
 import benfoldsImg from '../public/bf.png'
 import gateio from '../public/gate.io.png'
@@ -24,7 +25,9 @@ export default function App() {
 
   const splineRef = useRef(null)
 
-  useEffect(() => onLoad(), [])
+  useEffect(() => {
+    onLoad()
+  }, [])
 
   useEffect(() => {
     gsap
@@ -40,6 +43,54 @@ export default function App() {
         y: -1
       })
   }, [])
+
+  useEffect(() => {
+    setupASScroll()
+  }, [])
+
+  const setupASScroll = () => {
+    const asscroll = new ASScroll({
+      disableRaf: true,
+      ease: 0.1
+    })
+
+    gsap.ticker.add(asscroll.update)
+
+    ScrollTrigger.defaults({
+      scroller: asscroll.containerElement
+    })
+
+    ScrollTrigger.scrollerProxy(asscroll.containerElement, {
+      scrollTop(value) {
+        if (arguments.length) {
+          asscroll.currentPos = value
+          return
+        }
+        return asscroll.currentPos
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight
+        }
+      },
+      fixedMarkers: true
+    })
+
+    asscroll.on('update', ScrollTrigger.update)
+    ScrollTrigger.addEventListener('refresh', asscroll.resize)
+
+    requestAnimationFrame(() => {
+      asscroll.enable({
+        newScrollElements: document.querySelectorAll(
+          '.gsap-marker-start, .gsap-marker-end, [asscroll]'
+        )
+      })
+    })
+    return asscroll
+  }
 
   // 弹窗
   const popWindow = () => {
@@ -80,7 +131,7 @@ export default function App() {
   }
 
   return (
-    <div className="App w-full h-full flex flex-col">
+    <div className="App w-full h-full flex flex-col" asscroll="true">
       {/* 第一层内容 */}
       <div className="showStand fixed w-[100vw] h-[100vh] flex flex-col items-center">
         {/* 背景3D模型 */}
@@ -152,7 +203,7 @@ export default function App() {
           </div>
           {/* 波浪 */}
           <svg
-            className="md:h-12 h-8 w-full absolute bottom-0 fill-white"
+            className="md:h-12 h-8 w-full absolute bottom-[-1px] fill-white"
             aria-hidden="true"
             fill=""
             xmlns="http://www.w3.org/2000/svg"
